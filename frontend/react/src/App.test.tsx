@@ -3,6 +3,7 @@
 import '@testing-library/jest-dom/extend-expect';
 
 import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import App from './App';
 import { it, describe, expect } from 'vitest';
 
@@ -14,5 +15,11 @@ describe('app', () => {
     render(<App />);
     const linkElement = screen.getByText(/learn react/i);
     expect(linkElement).toBeInTheDocument();
+  })
+
+  it('clicks the link', async () => {
+    render(<App />);
+    const linkElement = screen.getByText(/learn react/i);
+    await userEvent.click(linkElement);
   })
 });
