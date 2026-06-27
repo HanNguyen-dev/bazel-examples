@@ -74,21 +74,20 @@ Create a markdown comment with:
 
 ### 5. Post Comment to PR
 
-Use GitHub CLI or API:
+Prefer GitHub MCP tools over GitKraken-specific tooling.
 
-**With GitHub API (via language-agnostic curl):**
+**With GitHub MCP:**
+- Use `mcp_github_mcp_se_pull_request_review_write` to submit a PR review comment with the formatted failure report.
+- Provide the repository owner, repository name, pull request number, and the markdown body.
+- Use `event: COMMENT` for a non-blocking test report or `REQUEST_CHANGES` if the failure should block the PR.
+
+**Fallback options:**
+- GitHub CLI: `gh pr comment <pr-number> --body "YOUR_FORMATTED_COMMENT"`
+- GitHub API (via curl):
 ```bash
 curl -X POST https://api.github.com/repos/OWNER/REPO/issues/PR_NUMBER/comments \
   -H "Authorization: token $GITHUB_TOKEN" \
   -d '{"body": "YOUR_FORMATTED_COMMENT"}'
-```
-
-**Or use a tool like `mcp_github_mcp_se_add_issue_comment`:**
-```
-owner: OWNER
-repo: REPO
-issue_number: PR_NUMBER
-body: FORMATTED_COMMENT
 ```
 
 ## Example Workflow
