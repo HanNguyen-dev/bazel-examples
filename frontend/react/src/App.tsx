@@ -1,6 +1,7 @@
 /// <reference types="vite-plugin-svgr/client" />
 import logo from './logo.svg?react';
 import './App.css';
+import Life from './Life';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           Learn React
         </a>
       </header>
+      <Life />
     </div>
   );
 }
